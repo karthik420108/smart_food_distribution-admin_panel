@@ -1,0 +1,11 @@
+{
+  "name": "smart-food-distribution-admin",
+  "private": true,
+  "workspaces": [
+    "admin/client",
+    "admin/server"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=admin/client && npm run build --workspace=admin/server"
+  }
+}
