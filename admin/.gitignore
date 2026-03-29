@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.agents/
+.claude/
+.windsurf/
+skills-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
