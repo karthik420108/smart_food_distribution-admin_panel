@@ -3,7 +3,10 @@
     "builds": [
         {
             "src": "admin/client/package.json",
-            "use": "@vercel/static-build"
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist"
+            }
         },
         {
             "src": "admin/server/src/index.ts",
@@ -13,11 +16,13 @@
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "admin/server/src/index.ts"
+            "destination": "/admin/server/src/index.ts"
         },
         {
-            "source": "/(.*)",
-            "destination": "/$1"
+            "source": "/((?!api/).*)",
+            "destination": "/index.html"
         }
-    ]
+    ],
+    "trailingSlash": false,
+    "cleanUrls": true
 }
