@@ -13,16 +13,18 @@
             "use": "@vercel/node"
         }
     ],
-    "rewrites": [
+    "routes": [
         {
-            "source": "/api/(.*)",
-            "destination": "/admin/server/src/index.ts"
+            "src": "/api/(.*)",
+            "dest": "admin/server/src/index.ts"
         },
         {
-            "source": "/((?!api/).*)",
-            "destination": "/index.html"
+            "src": "/assets/(.*)",
+            "dest": "/assets/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
         }
-    ],
-    "trailingSlash": false,
-    "cleanUrls": true
+    ]
 }
