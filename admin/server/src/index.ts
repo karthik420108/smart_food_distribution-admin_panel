@@ -29,12 +29,16 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() })
 })
 
-export default app;
+// Vercel serverless function export
+const handler = (req: any, res: any) => {
+  return app(req, res)
+}
 
+export default handler
+
+// Local development server
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
   })
 }
-
-// trigger restart

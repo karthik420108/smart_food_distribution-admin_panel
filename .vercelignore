@@ -1,0 +1,14 @@
+admin/client/node_modules
+admin/server/node_modules
+admin/client/src
+admin/server/src
+*.log
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.git
+.gitignore
+README.md
+.vercel
