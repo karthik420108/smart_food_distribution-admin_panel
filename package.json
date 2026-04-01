@@ -6,6 +6,8 @@
     "admin/server"
   ],
   "scripts": {
-    "build": "npm run build --workspace=admin/client && npm run build --workspace=admin/server"
+    "build": "npm run build --workspace=admin/client && npm run build --workspace=admin/server",
+    "start": "npm start --workspace=admin/server",
+    "dev": "npm run dev --workspace=admin/server"
   }
 }
