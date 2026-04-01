@@ -1,5 +1,4 @@
-// API relative base URL for dev proxy or production same-origin
-const API_BASE_URL = ''
+import { API_BASE_URL } from './config'
 
 export interface LoginResponse {
   message: string

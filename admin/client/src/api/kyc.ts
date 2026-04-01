@@ -1,6 +1,8 @@
+import { API_BASE_URL } from './config'
+
 export const fetchPendingKyc = async () => {
     const token = localStorage.getItem('adminToken')
-    const response = await fetch('/api/kyc/pending', {
+    const response = await fetch(`${API_BASE_URL}/api/kyc/pending`, {
         headers: { 'Authorization': `Bearer ${token}` }
     })
     if (!response.ok) throw new Error('Failed to fetch KYC')
@@ -9,7 +11,7 @@ export const fetchPendingKyc = async () => {
 
 export const reviewKyc = async (id: string, status: 'verified' | 'rejected', user_type: 'donor' | 'receiver') => {
     const token = localStorage.getItem('adminToken')
-    const response = await fetch(`/api/kyc/${id}/review`, {
+    const response = await fetch(`${API_BASE_URL}/api/kyc/${id}/review`, {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`,

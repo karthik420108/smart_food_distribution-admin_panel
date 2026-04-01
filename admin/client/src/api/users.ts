@@ -1,8 +1,10 @@
+import { API_BASE_URL } from './config'
+
 // User management API calls
 
 export const fetchUsers = async (type = 'all') => {
     const token = localStorage.getItem('adminToken')
-    const response = await fetch(`/api/users?type=${type}`, {
+    const response = await fetch(`${API_BASE_URL}/api/users?type=${type}`, {
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -14,7 +16,7 @@ export const fetchUsers = async (type = 'all') => {
 
 export const fetchUserStats = async () => {
     const token = localStorage.getItem('adminToken')
-    const response = await fetch('/api/users/stats', {
+    const response = await fetch(`${API_BASE_URL}/api/users/stats`, {
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -26,7 +28,7 @@ export const fetchUserStats = async () => {
 
 export const updateUserStatus = async (userId: string, status: string, reason?: string) => {
     const token = localStorage.getItem('adminToken')
-    const response = await fetch(`/api/users/${userId}/status`, {
+    const response = await fetch(`${API_BASE_URL}/api/users/${userId}/status`, {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`,

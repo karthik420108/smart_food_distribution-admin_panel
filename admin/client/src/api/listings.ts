@@ -1,6 +1,8 @@
+import { API_BASE_URL } from './config'
+
 export const fetchListings = async () => {
     const token = localStorage.getItem('adminToken')
-    const response = await fetch('/api/listings', {
+    const response = await fetch(`${API_BASE_URL}/api/listings`, {
         headers: { 'Authorization': `Bearer ${token}` }
     })
     if (!response.ok) throw new Error('Failed to fetch listings')
@@ -9,7 +11,7 @@ export const fetchListings = async () => {
 
 export const updateListingStatus = async (id: string, status: string) => {
     const token = localStorage.getItem('adminToken')
-    const response = await fetch(`/api/listings/${id}/status`, {
+    const response = await fetch(`${API_BASE_URL}/api/listings/${id}/status`, {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`,
