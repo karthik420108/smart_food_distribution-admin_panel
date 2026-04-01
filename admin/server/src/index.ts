@@ -31,8 +31,17 @@ app.use(cors({
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true)
 
+    // In development, allow anything from localhost
+    const isLocalhost = origin.includes('localhost') || origin.includes('127.0.0.1')
+
     if (isProd) {
-      if (allowedOrigins.indexOf(origin) !== -1) {
+      // Check if it's in the explicitly allowed list
+      const isAllowedExplicitly = allowedOrigins.indexOf(origin) !== -1
+
+      // Also allow common deployment domains for flexibility (e.g. any .onrender.com or .vercel.app)
+      const isCommonDeploymentDomain = origin.endsWith('.onrender.com') || origin.endsWith('.vercel.app')
+
+      if (isAllowedExplicitly || isCommonDeploymentDomain || isLocalhost) {
         callback(null, true)
       } else {
         // Logging the denied origin for debugging in production
