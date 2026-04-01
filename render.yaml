@@ -1,19 +1,23 @@
 services:
   - type: web
-    name: rescuebite-admin
-    runtime: node
-    buildCommand: npm run build
-    startCommand: npm start
+    name: rescuebite-backend
+    env: node
+    plan: free # Change to starter/pro if needed
+    buildCommand: npm install && npm run build -w admin/server
+    startCommand: npm start -w admin/server
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 10000
-      - key: SUPABASE_URL
-        sync: false
-      - key: SUPABASE_ANON_KEY
-        sync: false
-      - key: SUPABASE_SERVICE_ROLE_KEY
-        sync: false
+        value: 5000
       - key: JWT_SECRET
-        generateValue: true
+        generateValue: true # Generate a random secret
+      - key: SUPABASE_URL
+        sync: false # Set manually in Render dashboard
+      - key: SUPABASE_ANON_KEY
+        sync: false # Set manually in Render dashboard
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false # Set manually in Render dashboard
+      - key: FRONTEND_URL
+        sync: false # Set manually in Render dashboard (e.g. Vercel URL)
